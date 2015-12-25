@@ -46,7 +46,8 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     [self.navigationController.navigationBar bar_backgroundColor:[UIColor clearColor]];
-    
+    self.title = @"个人中心";
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor clearColor]};
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -73,8 +74,10 @@
     if (yOffset > NAVBAR_CHANGE_POINT) {
         CGFloat alpha = MIN(1, 1 - ((NAVBAR_CHANGE_POINT + 64 - yOffset) / 64));
         [self.navigationController.navigationBar bar_backgroundColor:[color colorWithAlphaComponent:alpha]];
+        self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[[UIColor blackColor] colorWithAlphaComponent:alpha]};
     }else{
         [self.navigationController.navigationBar bar_backgroundColor:[color colorWithAlphaComponent:0]];
+         self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[[UIColor blackColor] colorWithAlphaComponent:0]};
     }
 }
 
